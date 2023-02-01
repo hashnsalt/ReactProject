@@ -109,15 +109,15 @@ function App() {
             </Container>
             <Routes>
               <Route path='/*' element={<Best data={games}/>}/>
-              <Route path='/action' element={<Action />}/>
-              <Route path='/rpg' element={<Rpg />}/>
-              <Route path='/arcade' element={<Arcade />}/>
-              <Route path='/casual' element={<Casual />}/>
-              <Route path='/fighting' element={<Fighting />}/>
-              <Route path='/openWorld' element={<OpenWorld />}/>
-              <Route path='/platform' element={<Platform />}/>
-              <Route path='/shooter' element={<Shooter />}/>
-              <Route path='/controller' element={<Controller />}/>
+              <Route path='/action' element={<Action data={games} />}/>
+              <Route path='/rpg' element={<Rpg data={games} />}/>
+              <Route path='/arcade' element={<Arcade data={games} />}/>
+              <Route path='/casual' element={<Casual data={games} />}/>
+              <Route path='/fighting' element={<Fighting data={games} />}/>
+              <Route path='/openWorld' element={<OpenWorld data={games} />}/>
+              <Route path='/platform' element={<Platform data={games} />}/>
+              <Route path='/shooter' element={<Shooter data={games} />}/>
+              <Route path='/controller' element={<Controller data={games} />}/>
             </Routes>
           </>
         }></Route>

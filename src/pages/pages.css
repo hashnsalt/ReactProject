@@ -1,4 +1,6 @@
+*{margin: 0; padding: 0;}
 a {text-decoration: none;}
+li {list-style: none;}
 .game_list {
   margin: 60px 0;
 }
@@ -7,4 +9,77 @@ a {text-decoration: none;}
   border:  1px solid #eee;
   box-shadow: 0 0 5px rgba(0, 0, 0, 70%);
   margin-bottom: 20px;
+}
+.game_item .item_info {
+  width: 100%;
+  text-align: left;
+  padding: 2%; box-sizing: border-box;
+}
+
+.tag_list {
+  width: 100%;
+  padding: 0;
+}
+
+.tag_list li {
+  display: inline-block;
+  padding: 1% 2%;
+  border: 1px solid beige;
+  background-color: rgba(190, 190, 190, 30%);
+  border-radius: 10px;
+  margin-right: 10px; 
+}
+
+.game_item .item_info p {
+  margin-bottom: 0;
+}
+
+.game_item .item_info .price {
+  display: flex;
+  justify-content: right;
+}
+
+.game_item .item_info .price .free_play {
+  background-color: rgba(190, 190, 190, 30%);
+  padding: 1%;
+}
+
+.game_item .item_info .price .discount_per {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  width: 80px;
+  border:1px solid #ccc;
+  margin-right: 10px;
+}
+
+.game_item .item_info .price .del_cost {
+  position: relative;
+  font-size: 15px;
+  text-align: right;
+}
+
+.game_item .item_info .price .del_cost::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  border-bottom: 1px solid #2d2d2d;
+  transform: skewY(-15deg);
+}
+
+.game_item .item_info .price .cost_result {
+  padding: 0 1%; box-sizing: border-box;
+  background-color: rgba(180, 180, 180, 30%);
+}
+
+.game_item .item_info .price .cost_result .discount_cost {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.game_item .item_info .price .item_cost{
+  background-color: rgba(180, 180, 180, 30%);
+  padding: 1%; box-sizing: border-box;
 }
