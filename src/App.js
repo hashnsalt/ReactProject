@@ -1,4 +1,5 @@
 import './App.css';
+import './pages/pages.css'
 import {Container, Nav, Navbar, Carousel} from 'react-bootstrap';
 import {Routes, Route, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
@@ -16,6 +17,7 @@ import OpenWorld from './pages/OpenWorld';
 import Platform from './pages/Platform';
 import Shooter from './pages/Shooter';
 import Controller from './pages/Controller';
+import Detail from './pages/Details';
 
 function App() {
 
@@ -53,13 +55,19 @@ function App() {
           <div style={{backgroundColor:'#2d2d2d'}}>
             <Carousel>
               <Carousel.Item>
-                <img src={process.env.PUBLIC_URL+'/images/vs_main01.jpg'} alt="" style={{width:'40%'}}/>
+                <div className='vs_main vs_main01'>
+                  <div className='vs_img'><img src={process.env.PUBLIC_URL+'/images/vs_main01.jpg'} alt="" style={{width:'40%'}}/></div>
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <img src={process.env.PUBLIC_URL+'/images/vs_main02.jpg'} alt="" style={{width:'40%'}}/>
+                <div className='vs_main vs_main02'>
+                  <div className='vs_img'><img src={process.env.PUBLIC_URL + '/images/vs_main02.jpg'} alt="" style={{ width: '40%' }} /></div>
+                </div>
               </Carousel.Item>
               <Carousel.Item>
-                <img src={process.env.PUBLIC_URL+'/images/vs_main03.jpg'} alt="" style={{width:'40%'}}/>
+                  <div className='vs_main vs_main03'>
+                    <div className='vs_img'><img src={process.env.PUBLIC_URL + '/images/vs_main03.jpg'} alt="" style={{ width: '40%' }} /></div>
+                  </div>
               </Carousel.Item>
             </Carousel>
           </div>
@@ -67,7 +75,7 @@ function App() {
               <div className='nav_bg'>
                 <Nav>
                   <Nav.Link onClick={() => {
-                    navigate('/');
+                    navigate('/*');
                   }}>BEST</Nav.Link>
                   <Nav.Link onClick={() => {
                     navigate('/action');
@@ -100,7 +108,7 @@ function App() {
               </div>
             </Container>
             <Routes>
-              <Route path='/' element={<Best data={games}/>}/>
+              <Route path='/*' element={<Best data={games}/>}/>
               <Route path='/action' element={<Action />}/>
               <Route path='/rpg' element={<Rpg />}/>
               <Route path='/arcade' element={<Arcade />}/>
@@ -119,6 +127,7 @@ function App() {
 
         </Route>
         <Route path='support' element={<Support />}/>
+        <Route path='detail/:id' element={<Detail data={games} />}/>
 
       </Routes>
     </div>
