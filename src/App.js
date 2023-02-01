@@ -18,6 +18,7 @@ import Platform from './pages/Platform';
 import Shooter from './pages/Shooter';
 import Controller from './pages/Controller';
 import Detail from './pages/Details';
+import Cart from './pages/Cart';
 
 function App() {
 
@@ -44,6 +45,9 @@ function App() {
             <Nav.Link onClick={() => {
               navigate('/support')
             }}>SUPPORT</Nav.Link>
+            <Nav.Link onClick={() => {
+              navigate('/cart')
+            }}>Cart</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -128,6 +132,7 @@ function App() {
         </Route>
         <Route path='support' element={<Support />}/>
         <Route path='detail/:id' element={<Detail data={games} />}/>
+        <Route path='cart' element={<Cart />}/>
 
       </Routes>
     </div>
