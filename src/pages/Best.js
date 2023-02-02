@@ -1,9 +1,12 @@
 import {Row, Col, Container} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { addItem } from './store';
 
 export default function Best(props) {
   
   const {data} = props;
+  const dispatch = useDispatch();
 
   return(
     <>
@@ -37,6 +40,9 @@ export default function Best(props) {
                           </div>
                         </div>
                       </Link>
+                      <button onClick={() => {
+                        dispatch(addItem({id: item.id, name: item.name, price: item.price, discount: item.discount, count: 1}))
+                      }}>장바구니</button>
                     </Row>
                   : ''}
                   </>
