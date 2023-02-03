@@ -78,51 +78,51 @@ function App() {
             <Container>
               <div className='nav_bg'>
                 <Nav>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/*');
                   }}>BEST</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/action');
                   }}>액션</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/rpg');
                   }}>RPG</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/arcade');
                   }}>아케이드</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/casual');
                   }}>캐주얼</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/fighting');
                   }}>파이터</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/openWorld');
                   }}>오픈월드</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/platform')
                   }}>플랫폼</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/shooter')
                   }}>슈팅</Nav.Link>
-                  <Nav.Link onClick={() => {
+                  <Nav.Link className='sub_nav' onClick={() => {
                     navigate('/controller')
                   }}>컨트롤러</Nav.Link>
                 </Nav>
               </div>
+              <Routes>
+                <Route path='/*' element={<Best data={games} />} />
+                <Route path='/action' element={<Action data={games} />} />
+                <Route path='/rpg' element={<Rpg data={games} />} />
+                <Route path='/arcade' element={<Arcade data={games} />} />
+                <Route path='/casual' element={<Casual data={games} />} />
+                <Route path='/fighting' element={<Fighting data={games} />} />
+                <Route path='/openWorld' element={<OpenWorld data={games} />} />
+                <Route path='/platform' element={<Platform data={games} />} />
+                <Route path='/shooter' element={<Shooter data={games} />} />
+                <Route path='/controller' element={<Controller data={games} />} />
+              </Routes>
             </Container>
-            <Routes>
-              <Route path='/*' element={<Best data={games}/>}/>
-              <Route path='/action' element={<Action data={games} />}/>
-              <Route path='/rpg' element={<Rpg data={games} />}/>
-              <Route path='/arcade' element={<Arcade data={games} />}/>
-              <Route path='/casual' element={<Casual data={games} />}/>
-              <Route path='/fighting' element={<Fighting data={games} />}/>
-              <Route path='/openWorld' element={<OpenWorld data={games} />}/>
-              <Route path='/platform' element={<Platform data={games} />}/>
-              <Route path='/shooter' element={<Shooter data={games} />}/>
-              <Route path='/controller' element={<Controller data={games} />}/>
-            </Routes>
           </>
         }></Route>
 

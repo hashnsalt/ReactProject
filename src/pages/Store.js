@@ -3,11 +3,15 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const cart = createSlice({
   name: 'cart',
-  initialState: [{id:'g_00', name:'dnjfdnjf', price: 1200, discount:0.5, count: 1}],
+  initialState: [],
   reducers: {
     addCount(state, action) {
       const index = state.findIndex((i) => {return i.id === action.payload})
+      if(state[index].price > 0 && state[index].count < 5) {
       state[index].count++
+    } else {
+      alert('추가할 수 없습니다.');
+    }
     },
     subCount(state, action) {
       const index = state.findIndex((i) => {return i.id === action.payload})
@@ -20,9 +24,15 @@ const cart = createSlice({
       state.splice(index, 1)
     },
     addItem(state, action) {
-      const index = state.findIndex((i) => {return i.id === action.payload})
-      if(index>-1){
+      const index = state.findIndex((i) => {return i.id === action.payload.id})
+      if(index>-1) {
         state[index].count++
+        if(state[index].price <= 0){
+          alert('해당 상품은 더 이상 담을 수 없습니다.');
+          state[index].count = 1;
+        } else if (state[index].count > 4) {
+          alert('해당 상품은 더 이상 담을 수 없습니다.');
+        }
       } else {
         state.push(action.payload);
       }
@@ -30,7 +40,7 @@ const cart = createSlice({
   }
 })
 
-export const {addCount, subCount, delItem, addItem, sumPrice} = cart.actions
+export const {addCount, subCount, delItem, addItem} = cart.actions
 
 export default configureStore({
   reducer: {

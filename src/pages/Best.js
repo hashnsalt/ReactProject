@@ -41,7 +41,7 @@ export default function Best(props) {
                         </div>
                       </Link>
                       <button onClick={() => {
-                        dispatch(addItem({id: item.id, name: item.name, price: item.price, discount: item.discount, count: 1}))
+                        dispatch(addItem({id: item.id, image: <img src={item.image} alt=''/>, name: item.name, price: item.price, discount: item.discount, count: 1}))
                       }}>장바구니</button>
                     </Row>
                   : ''}
