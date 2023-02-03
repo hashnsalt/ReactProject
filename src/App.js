@@ -24,6 +24,7 @@ function App() {
 
   const navigate = useNavigate();
   const [games] = useState(game);
+  const [active, setActive] = useState(1);
 
   return (
     <div className="App">
@@ -78,35 +79,45 @@ function App() {
             <Container>
               <div className='nav_bg'>
                 <Nav>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 1 ? 'active' : ''} onClick={() => {
                     navigate('/*');
+                    setActive(1);
                   }}>BEST</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 2 ? 'active' : ''} onClick={() => {
                     navigate('/action');
+                    setActive(2);
                   }}>액션</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 3 ? 'active' : ''} onClick={() => {
                     navigate('/rpg');
+                    setActive(3);
                   }}>RPG</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 4 ? 'active' : ''} onClick={() => {
                     navigate('/arcade');
+                    setActive(4);
                   }}>아케이드</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 5 ? 'active' : ''} onClick={() => {
                     navigate('/casual');
+                    setActive(5);
                   }}>캐주얼</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 6 ? 'active' : ''} onClick={() => {
                     navigate('/fighting');
+                    setActive(6);
                   }}>파이터</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
+                  <Nav.Link className={active === 7 ? 'active' : ''} onClick={() => {
                     navigate('/openWorld');
+                    setActive(7);
                   }}>오픈월드</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
-                    navigate('/platform')
+                  <Nav.Link className={active === 8 ? 'active' : ''} onClick={() => {
+                    navigate('/platform');
+                    setActive(8);
                   }}>플랫폼</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
-                    navigate('/shooter')
+                  <Nav.Link className={active === 9 ? 'active' : ''} onClick={() => {
+                    navigate('/shooter');
+                    setActive(9);
                   }}>슈팅</Nav.Link>
-                  <Nav.Link className='sub_nav' onClick={() => {
-                    navigate('/controller')
+                  <Nav.Link className={active === 10 ? 'active' : ''} onClick={() => {
+                    navigate('/controller');
+                    setActive(10);
                   }}>컨트롤러</Nav.Link>
                 </Nav>
               </div>

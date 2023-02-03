@@ -2,6 +2,7 @@ const game = [
 	{
 		id: 'g_01',
 		image: process.env.PUBLIC_URL+'/images/g01.jpg',
+		imageon: process.env.PUBLIC_URL+'/images/g02.jpg',
 		name: 'HI-FI RUSH',
 		tag01:'액션',
 		tag02:'리듬',
@@ -47,6 +48,7 @@ const game = [
 	{
 		id: 'g_04',
 		image: process.env.PUBLIC_URL+'/images/g04.jpg',
+		imageon: process.env.PUBLIC_URL+'/images/g02.jpg',
 		name: "	WATCH DOGS®: LEGION",
 		tag01: '액션',
 		tag02: '어드벤처',

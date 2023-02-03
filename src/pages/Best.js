@@ -2,11 +2,14 @@ import {Row, Col, Container} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { addItem } from './store';
+import { useState } from 'react';
 
 export default function Best(props) {
   
   const {data} = props;
   const dispatch = useDispatch();
+  const [hover, setHover] = useState(false);
+  const [index, setIndex] = useState();
 
   return(
     <>
@@ -20,9 +23,10 @@ export default function Best(props) {
                   {item.tag06 === 'best' ? 
                     <Row>
                       <Link to={`/detail/${i}`}>
-                        <div className='game_item'>
-                          <div className='item_img'><img src={item.image} alt="" /></div>
-                          <div className="item_info">
+                        <div className='game_item' onMouseOver={() => {setHover(true)
+setIndex(i)}} onMouseOut={() => {setHover(false)}}>
+                          <div className='item_img'><img src={hover === true && index === i ? item.imageon : item.image} alt="" /></div>
+                          <div className='item_info'>
                             <h4>{item.name}</h4>
                             <ul className="tag_list">
                               <li>{item.tag01}</li>
