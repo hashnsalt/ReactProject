@@ -1,7 +1,7 @@
 import './App.css';
 import './pages/pages.css'
 import {Container, Nav, Navbar, Carousel} from 'react-bootstrap';
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 import game from './pages/productData';
 import About from './pages/About';
@@ -20,11 +20,24 @@ import Controller from './pages/Controller';
 import Detail from './pages/Details';
 import Cart from './pages/Cart';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { delDaily } from './pages/store';
+
 function App() {
+
+  // const dailyView = () => { document.querySelector('.daily_view');
+  //           dailyView.style.cssText = `right: 0`;
+  //         }
 
   const navigate = useNavigate();
   const [games] = useState(game);
   const [active, setActive] = useState(1);
+  const [thumb, setThumb] = useState(1);
+  const state = useSelector((state) => {
+    return state;
+  })
+  const dispatch = useDispatch();
+  let cartCount = 0;
 
   return (
     <div className="App">
@@ -46,9 +59,9 @@ function App() {
             <Nav.Link onClick={() => {
               navigate('/support')
             }}>SUPPORT</Nav.Link>
-            <Nav.Link onClick={() => {
+            <Nav.Link className='cart_link' onClick={() => {
               navigate('/cart')
-            }}>Cart</Nav.Link>
+            }}><i class="fa-solid fa-cart-shopping"></i></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -59,19 +72,70 @@ function App() {
           <>
           <div style={{backgroundColor:'#2d2d2d'}}>
             <Carousel>
+                <Carousel.Item>
+                  <div className='vs_main vs_main01'>
+                    <div className='vs_img'><img src={thumb === 1 ? process.env.PUBLIC_URL + '/images/vs_main01.jpg' : thumb === 2 ? process.env.PUBLIC_URL + '/images/vs_main01_2.jpg' : thumb === 3 ? process.env.PUBLIC_URL + '/images/vs_main01_3.jpg' : thumb === 4 ? process.env.PUBLIC_URL + '/images/vs_main01_4.jpg' : process.env.PUBLIC_URL + '/images/vs_main01.jpg'} alt="" /></div>
+                    <div className='thumb_vs_main'>
+                      <h3>Grand Theft Auto</h3>
+                      <div className="thumb_img_box">
+                        <div className={thumb === 1 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(1)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main01.jpg'} alt="" /></div>
+                        <div className={thumb === 2 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(2)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main01_2.jpg'} alt="" /></div>
+                        <div className={thumb === 3 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(3)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main01_3.jpg'} alt="" /></div>
+                        <div className={thumb === 4 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(4)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main01_4.jpg'} alt="" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div className='vs_main vs_main02'>
+                    <div className='vs_img'><img src={thumb === 5 ? process.env.PUBLIC_URL + '/images/vs_main02.jpg' : thumb === 6 ? process.env.PUBLIC_URL + '/images/vs_main02_1.jpg' : thumb === 7 ? process.env.PUBLIC_URL + '/images/vs_main02_2.jpg' : thumb === 8 ? process.env.PUBLIC_URL + '/images/vs_main02_3.jpg' : process.env.PUBLIC_URL + '/images/vs_main02.jpg'} alt="" /></div>
+                    <div className='thumb_vs_main'>
+                      <h3>SPORT<sup>ⓒFA</sup> FIFA</h3>
+                      <div className="thumb_img_box">
+                        <div className={thumb === 5 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(5)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main02.jpg'} alt="" /></div>
+                        <div className={thumb === 6 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(6)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main02_1.jpg'} alt="" /></div>
+                        <div className={thumb === 7 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(7)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main02_2.jpg'} alt="" /></div>
+                        <div className={thumb === 8 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(8)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main02_3.jpg'} alt="" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </Carousel.Item>
               <Carousel.Item>
-                <div className='vs_main vs_main01'>
-                  <div className='vs_img'><img src={process.env.PUBLIC_URL+'/images/vs_main01.jpg'} alt="" style={{width:'40%'}}/></div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className='vs_main vs_main02'>
-                  <div className='vs_img'><img src={process.env.PUBLIC_URL + '/images/vs_main02.jpg'} alt="" style={{ width: '40%' }} /></div>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                  <div className='vs_main vs_main03'>
-                    <div className='vs_img'><img src={process.env.PUBLIC_URL + '/images/vs_main03.jpg'} alt="" style={{ width: '40%' }} /></div>
+              <div className='vs_main vs_main03'>
+                    <div className='vs_img'><img src={thumb === 9 ? process.env.PUBLIC_URL + '/images/vs_main03.jpg' : thumb === 10 ? process.env.PUBLIC_URL + '/images/vs_main03_1.jpg' : thumb === 11 ? process.env.PUBLIC_URL + '/images/vs_main03_2.jpg' : thumb === 12 ? process.env.PUBLIC_URL + '/images/vs_main03_3.jpg' : process.env.PUBLIC_URL + '/images/vs_main03.jpg'} alt="" /></div>
+                    <div className='thumb_vs_main'>
+                      <h3>BATTLEGROUNDS</h3>
+                      <div className="thumb_img_box">
+                        <div className={thumb === 9 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(9)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main03.jpg'} alt="" /></div>
+                        <div className={thumb === 10 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(10)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main03_1.jpg'} alt="" /></div>
+                        <div className={thumb === 11 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(11)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main03_2.jpg'} alt="" /></div>
+                        <div className={thumb === 12 ? 'vs_thumb_img pick' : 'vs_thumb_img'} onClick={() => {
+                          setThumb(12)
+                        }}><img src={process.env.PUBLIC_URL + '/images/vs_main03_3.jpg'} alt="" /></div>
+                      </div>
+                    </div>
                   </div>
               </Carousel.Item>
             </Carousel>
@@ -146,6 +210,29 @@ function App() {
         <Route path='cart' element={<Cart />}/>
 
       </Routes>
+      <div className="daily_view">
+        <div className="daily_view_btn"><p>오늘 본 상품</p></div>
+        <div className="daily_view_box">
+          <p className="daily_p">오늘 본 상품</p>
+          <div className="daily_img_box">
+            {
+              state.pick.map((item, i) => {
+                return (
+                  <>
+                    <div className="thumb_image">
+                      <Link to={`/detail/${state.pick[i].num}`} className='daily_view_img'>{state.pick[i].image}</Link>
+                      <div className="view_img_del" onClick={() => {
+                        dispatch(delDaily(state.pick[i].id))
+                      }}>X</div>
+                    </div>
+                  </>
+                )
+              }
+              )
+            }
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

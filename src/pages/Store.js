@@ -1,6 +1,28 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 
+const pick = createSlice({
+  name: 'pick',
+  initialState: [],
+  reducers: {
+    delDaily(state, action){
+      const index = state.findIndex((i) => {return i.id === action.payload})
+      state.splice(index, 1)
+    },
+    addDaily(state, action) {
+      const index = state.findIndex((i) => {return i.id === action.payload.id})
+      if(index>-1) {
+        state[index].count++
+      } else {
+        state.push(action.payload);
+      }
+    }
+  }
+})
+
+
+export const {delDaily, addDaily} = pick.actions
+
 const cart = createSlice({
   name: 'cart',
   initialState: [],
@@ -44,6 +66,7 @@ export const {addCount, subCount, delItem, addItem} = cart.actions
 
 export default configureStore({
   reducer: {
-    cart: cart.reducer
+    cart: cart.reducer,
+    pick: pick.reducer
   }
 })

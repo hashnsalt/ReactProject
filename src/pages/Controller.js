@@ -1,9 +1,64 @@
-import {Row, Col, Container} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import {Row, Col, Container} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addItem, addDaily } from './store';
+import { useState } from 'react';
+import styled from 'styled-components';
 
 export default function Controller(props) {
 
   const {data} = props;
+  const dispatch = useDispatch();
+  const [hover, setHover] = useState(false);
+  const [index, setIndex] = useState();
+
+  const DivItem = styled.div`
+    display: flex;
+    border: 1px solid #eee;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 70%);
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    padding: 0;
+
+    .item_img {
+      width: 470px; height: 250px;
+      padding: 1%;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .cart_add_btn {
+      display:none;
+      padding: 1%; box-sizing: border-box;
+      margin-left: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #61DAFB;
+      background-color: #20232a;
+      box-shadow: inset 1px 1px 2px 0px rgba(255,255,255,.5),
+      0px 0px 20px 5px rgba(45,45,45,20%),
+      0px 0px 20px 0px rgba(250,250,250,20%);
+
+    }
+
+    &:hover {
+      transform: scale(1.05, 1.15);
+      transition: all 0.3s;
+      .cart_add_btn{
+        display: block;
+      
+        &:hover {
+          box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,.5)
+        }
+      }
+      .item_img {
+        width: 470px; height: 100%;
+        padding: 0;
+      }
+    }
+  `
 
   return(
     <>
@@ -11,14 +66,20 @@ export default function Controller(props) {
         <Container>
           <Col>
             {
-              data.map((item, i) => { 
+              data.map((item, i) => {
                 return (
                   <>
-                  {item.tag01 === '컨트롤러' || item.tag02 === '컨트롤러' || item.tag03 === '컨트롤러' || item.tag04 === '컨트롤러' || item.tag05 === '컨트롤러' ? 
-                    <Row>
-                      <Link to={`/detail/${i}`}>
-                        <div className='game_item'>
-                          <div className='item_img'><img src={item.image} alt="" /></div>
+                    {item.tag01 === '컨트롤러' || item.tag02 === '컨트롤러' || item.tag03 === '컨트롤러' || item.tag04 === '컨트롤러' || item.tag05 === '컨트롤러' ?
+                      <Row>
+                        <DivItem className='game_item' onMouseOver={() => {
+                          setHover(true)
+                          setIndex(i)
+                        }} onMouseOut={() => { setHover(false) }}>
+                          <Link to={`/detail/${i}`}>
+                            <div className='item_img' onClick={() => {
+                              dispatch(addDaily({id: item.id, num: item.num, image: <img src={item.image} alt='' />}))
+                            }}><img src={hover === true && index === i ? item.imageon : item.image} alt="" /></div>
+                          </Link>
                           <div className="item_info">
                             <h4>{item.name}</h4>
                             <ul className="tag_list">
@@ -28,17 +89,19 @@ export default function Controller(props) {
                               <li>{item.tag04}</li>
                               <li>{item.tag05}</li>
                             </ul>
-                            <div><p>출시일: {item.date}</p></div>
+                            <div><p>{hover===true && index === i ? item.desc : <><b>출시일: </b>{item.date}</>}</p></div>
                             <div class='price'>
                               {item.price === 0 ? <p className='free_play'>무료 플레이</p>
-                              :item.discount > 0 ? <><p className='discount_per'>{(item.discount)*100}%</p><p className='cost_result'><p className='del_cost'>￦{  (item.price).toLocaleString()}</p><p className='discount_cost'>￦{((item.discount)*(item.price)).toLocaleString()}</p></p></>
-                :item.price > 0 && item.discount === 0 ? <p className='item_cost'>￦{(item.price).toLocaleString()}</p> :''}
+                                : item.discount > 0 ? <><p className='discount_per'>{(item.discount) * 100}%</p><p className='cost_result'><p className='del_cost'>￦{(item.price).toLocaleString()}</p><p className='discount_cost'>￦{((item.discount) * (item.price)).toLocaleString()}</p></p></>
+                                  : item.price > 0 && item.discount === 0 ? <p className='item_cost'>￦{(item.price).toLocaleString()}</p> : ''}
+                              <button className='cart_add_btn' onClick={() => {
+                                dispatch(addItem({ id: item.id, image: <img src={item.image} alt='' />, name: item.name, price: item.price, discount: item.discount, count: 1 }))
+                              }}>장바구니</button>
                             </div>
                           </div>
-                        </div>
-                      </Link>
-                    </Row>
-                  : ''}
+                        </DivItem>
+                      </Row>
+                      : ''}
                   </>
                 )
               })
