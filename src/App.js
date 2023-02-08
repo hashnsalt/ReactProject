@@ -52,9 +52,6 @@ function App() {
               navigate('/');
             }}>MAIN</Nav.Link>
             <Nav.Link onClick={() => {
-              navigate('/community');
-            }}>COMMUNITY</Nav.Link>
-            <Nav.Link onClick={() => {
               navigate('/about');
             }}>ABOUT</Nav.Link>
             <Nav.Link onClick={() => {

@@ -11,6 +11,7 @@ export default function Fighting(props) {
   const dispatch = useDispatch();
   const [hover, setHover] = useState(false);
   const [index, setIndex] = useState();
+  const [alert, setAlert] = useState(false);
 
   const DivItem = styled.div`
     display: flex;
@@ -60,6 +61,27 @@ export default function Fighting(props) {
     }
   `
 
+  const AlertBtn = styled.button`
+    width: 100px; height: 50px;
+    border-radius: 10px;
+    margin: 0 1%;
+    position: absolute;
+    background-color: #8F98A0;
+    bottom: 20%;
+    box-shadow:  -6px -20px 35px #8F98A0, -6px -10px 15px #c1c1c1, -20px 0px 30px #8F98A0, 0px 0px 25px rgba(0,0,0,20%);
+    border: 1px solid #eee;
+
+    &:hover {
+      box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 50%);
+      border: none;
+    }
+
+    &:nth-child(1) {
+      left: 25%;
+    }
+
+  `
+
   return(
     <>
       <div className="game_list">
@@ -96,6 +118,7 @@ export default function Fighting(props) {
                                   : item.price > 0 && item.discount === 0 ? <p className='item_cost'>￦{(item.price).toLocaleString()}</p> : ''}
                               <button className='cart_add_btn' onClick={() => {
                                 dispatch(addItem({ id: item.id, image: <img src={item.image} alt='' />, name: item.name, price: item.price, discount: item.discount, count: 1 }))
+                                setAlert(true);
                               }}>장바구니</button>
                             </div>
                           </div>
@@ -107,6 +130,17 @@ export default function Fighting(props) {
               })
             }
           </Col>
+          {alert === true 
+        ? <div className='cart_alert'>
+          <h3>장바구니로 이동하시겠습니까?</h3>
+            <div className="alert_btn_compo">
+              <Link to='/cart'><AlertBtn>예</AlertBtn></Link>
+              <AlertBtn onClick={() => {
+                setAlert(false);
+              }}>아니오</AlertBtn>
+            </div>
+        </div> 
+        : null}
         </Container>
       </div>
     </>
