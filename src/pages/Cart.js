@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addCount, subCount, delItem} from "./store";
+import { addCount, subCount, delItem, addDaily} from "./store";
 import { Link } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
@@ -45,7 +45,9 @@ export default function Cart(){
                   itemCount++
                   return (
                     <tr>
-                      <td className="cart_item_img"><Link to={`/detail/${state.cart[i].num}`}>{state.cart[i].image}</Link></td>
+                      <td className="cart_item_img" onClick={() => {
+                        dispatch(addDaily({id: state.cart[i].id, image: state.cart[i].image}))
+                      }}><Link to={`/detail/${state.cart[i].num}`}>{state.cart[i].image}</Link></td>
                       <td className="cart_item_title">{state.cart[i].name}</td>
                       {
                         state.cart[i].price === 0 ? <><td className="c_del_cost">{state.cart[i].price}</td><td className="cart_discount">{state.cart[i].discount}</td></>
