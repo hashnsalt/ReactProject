@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/ReactProject/static/css/main.d08dc4ef.css",
-    "main.js": "/ReactProject/static/js/main.09c1bab5.js",
+    "main.css": "/ReactProject/static/css/main.a1cd55f0.css",
+    "main.js": "/ReactProject/static/js/main.4e72d8ba.js",
     "static/js/787.a1af7939.chunk.js": "/ReactProject/static/js/787.a1af7939.chunk.js",
+    "static/media/about_game_ban09.jpg": "/ReactProject/static/media/about_game_ban09.ad40a04e95b5fd07dcdd.jpg",
+    "static/media/about_game_ban03.jpg": "/ReactProject/static/media/about_game_ban03.e940ee90742eed32b2f8.jpg",
+    "static/media/about_game_ban06.jpg": "/ReactProject/static/media/about_game_ban06.b8b3406275458014ff46.jpg",
+    "static/media/about_game_ban05.jpg": "/ReactProject/static/media/about_game_ban05.12c22508479640f81c82.jpg",
+    "static/media/about_game_ban11.jpg": "/ReactProject/static/media/about_game_ban11.0c41e74ec88981117eea.jpg",
+    "static/media/about_game_ban01.jpg": "/ReactProject/static/media/about_game_ban01.2a5bf86e8601b2dca2f8.jpg",
+    "static/media/about_game_ban10.jpg": "/ReactProject/static/media/about_game_ban10.9cd5ba4d9d6b6b3d49a3.jpg",
+    "static/media/about_game_ban08.jpg": "/ReactProject/static/media/about_game_ban08.2f0c6c81c28d4c64a91a.jpg",
     "index.html": "/ReactProject/index.html",
-    "main.d08dc4ef.css.map": "/ReactProject/static/css/main.d08dc4ef.css.map",
-    "main.09c1bab5.js.map": "/ReactProject/static/js/main.09c1bab5.js.map",
+    "main.a1cd55f0.css.map": "/ReactProject/static/css/main.a1cd55f0.css.map",
+    "main.4e72d8ba.js.map": "/ReactProject/static/js/main.4e72d8ba.js.map",
     "787.a1af7939.chunk.js.map": "/ReactProject/static/js/787.a1af7939.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d08dc4ef.css",
-    "static/js/main.09c1bab5.js"
+    "static/css/main.a1cd55f0.css",
+    "static/js/main.4e72d8ba.js"
   ]
 }
