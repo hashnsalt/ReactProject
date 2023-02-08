@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ReactProject/static/css/main.a1cd55f0.css",
-    "main.js": "/ReactProject/static/js/main.b8233531.js",
+    "main.js": "/ReactProject/static/js/main.18927897.js",
     "static/js/787.a1af7939.chunk.js": "/ReactProject/static/js/787.a1af7939.chunk.js",
     "static/media/about_game_ban09.jpg": "/ReactProject/static/media/about_game_ban09.ad40a04e95b5fd07dcdd.jpg",
     "static/media/about_game_ban03.jpg": "/ReactProject/static/media/about_game_ban03.e940ee90742eed32b2f8.jpg",
@@ -13,11 +13,11 @@
     "static/media/about_game_ban08.jpg": "/ReactProject/static/media/about_game_ban08.2f0c6c81c28d4c64a91a.jpg",
     "index.html": "/ReactProject/index.html",
     "main.a1cd55f0.css.map": "/ReactProject/static/css/main.a1cd55f0.css.map",
-    "main.b8233531.js.map": "/ReactProject/static/js/main.b8233531.js.map",
+    "main.18927897.js.map": "/ReactProject/static/js/main.18927897.js.map",
     "787.a1af7939.chunk.js.map": "/ReactProject/static/js/787.a1af7939.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a1cd55f0.css",
-    "static/js/main.b8233531.js"
+    "static/js/main.18927897.js"
   ]
 }
