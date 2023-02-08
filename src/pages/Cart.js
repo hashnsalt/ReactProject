@@ -45,7 +45,7 @@ export default function Cart(){
                   itemCount++
                   return (
                     <tr>
-                      <td className="cart_item_img">{state.cart[i].image}</td>
+                      <td className="cart_item_img"><Link to={`/detail/${state.cart[i].num}`}>{state.cart[i].image}</Link></td>
                       <td className="cart_item_title">{state.cart[i].name}</td>
                       {
                         state.cart[i].price === 0 ? <><td className="c_del_cost">{state.cart[i].price}</td><td className="cart_discount">{state.cart[i].discount}</td></>

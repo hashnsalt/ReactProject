@@ -117,7 +117,7 @@ export default function Best(props) {
                                 : item.discount > 0 ? <><p className='discount_per'>{(item.discount) * 100}%</p><p className='cost_result'><p className='del_cost'>￦{(item.price).toLocaleString()}</p><p className='discount_cost'>￦{((item.discount) * (item.price)).toLocaleString()}</p></p></>
                                   : item.price > 0 && item.discount === 0 ? <p className='item_cost'>￦{(item.price).toLocaleString()}</p> : ''}
                               <button className='cart_add_btn' onClick={() => {
-                                dispatch(addItem({ id: item.id, image: <img src={item.image} alt='' />, name: item.name, price: item.price, discount: item.discount, count: 1 }));
+                                dispatch(addItem({ id: item.id, num: item.num, image: <img src={item.image} alt='' />, name: item.name, price: item.price, discount: item.discount, count: 1 }));
                                 setAlert(true);
                               }}>장바구니</button>
                             </div>

@@ -105,7 +105,7 @@ export default function Detail(props) {
                 {data[id].price === 0 ? <p>가격: ￦{(data[id].price).toLocaleString()}</p> : data[id].price > 0 && data[id].discount > 0 ? <><span className="detail_discount">{data[id].discount * 100}%</span><p className="detail_price_result"><span>가격: <del>￦{(data[id].price).toLocaleString()}</del></span><span style={{ fontWeight: '500', fontSize: '24px' }}>￦{(data[id].price * (1 - data[id].discount)).toLocaleString()}</span></p></> : data[id].price > 0 && data[id].discount === 0 ? <span>가격: ￦{(data[id].price).toLocaleString()}</span> : ''}
               </div>
               <Button onClick={() => {
-                dispatch(addItem({ id: data[id].id, image: <img src={data[id].image} alt='' />, name: data[id].name, price: data[id].price, discount: data[id].discount, count: 1 }))
+                dispatch(addItem({ id: data[id].id, num: data[id].num, image: <img src={data[id].image} alt='' />, name: data[id].name, price: data[id].price, discount: data[id].discount, count: 1 }))
               }}>장바구니</Button>
               <Button>찜 하기</Button>
             </div>
