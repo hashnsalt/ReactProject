@@ -19,6 +19,7 @@ import Shooter from './pages/Shooter';
 import Controller from './pages/Controller';
 import Detail from './pages/Details';
 import Cart from './pages/Cart';
+import Footer from './pages/Footer';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { delDaily } from './pages/store';
@@ -37,7 +38,7 @@ function App() {
     return state;
   })
   const dispatch = useDispatch();
-  let cartCount = 0;
+  // let cartCount = 0;
 
   return (
     <div className="App">
@@ -233,6 +234,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

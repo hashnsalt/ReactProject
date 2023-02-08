@@ -47,6 +47,7 @@ const cart = createSlice({
     },
     addItem(state, action) {
       const index = state.findIndex((i) => {return i.id === action.payload.id})
+      
       if(index>-1) {
         state[index].count++
         if(state[index].price <= 0){
