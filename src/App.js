@@ -5,7 +5,6 @@ import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 import game from './pages/productData';
 import About from './pages/About';
-import Community from './pages/Community';
 import Support from './pages/Support';
 import Action from './pages/Action';
 import Rpg from './pages/Rpg';
@@ -23,6 +22,7 @@ import Footer from './pages/Footer';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { delDaily } from './pages/store';
+import Favorite from './pages/Favorite';
 
 function App() {
 
@@ -46,7 +46,7 @@ function App() {
         <Container>
           <Navbar.Brand onClick={() => {
             navigate('/');
-          }}><img src={process.env.PUBLIC_URL + '/images/STEAM.png'} alt="" style={{width: 150}}/></Navbar.Brand>
+          }}><img src={process.env.PUBLIC_URL + '/images/STEAM.png'} alt="" style={{ width: 150 }} /></Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link onClick={() => {
               navigate('/');
@@ -60,6 +60,9 @@ function App() {
             <Nav.Link className='cart_link' onClick={() => {
               navigate('/cart')
             }}><i class="fa-solid fa-cart-shopping"></i></Nav.Link>
+            <Nav.Link className='favorite_link' onClick={() => {
+              navigate('/favorite');
+            }}><i class="fa-solid fa-star"></i></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
@@ -68,8 +71,8 @@ function App() {
 
         <Route path='/*' element={
           <>
-          <div style={{backgroundColor:'#2d2d2d'}}>
-            <Carousel>
+            <div style={{ backgroundColor: '#2d2d2d' }}>
+              <Carousel>
                 <Carousel.Item>
                   <div className='vs_main vs_main01'>
                     <div className='vs_img'><img src={thumb === 1 ? process.env.PUBLIC_URL + '/images/vs_main01.jpg' : thumb === 2 ? process.env.PUBLIC_URL + '/images/vs_main01_2.jpg' : thumb === 3 ? process.env.PUBLIC_URL + '/images/vs_main01_3.jpg' : thumb === 4 ? process.env.PUBLIC_URL + '/images/vs_main01_4.jpg' : process.env.PUBLIC_URL + '/images/vs_main01.jpg'} alt="" /></div>
@@ -114,8 +117,8 @@ function App() {
                     </div>
                   </div>
                 </Carousel.Item>
-              <Carousel.Item>
-              <div className='vs_main vs_main03'>
+                <Carousel.Item>
+                  <div className='vs_main vs_main03'>
                     <div className='vs_img'><img src={thumb === 9 ? process.env.PUBLIC_URL + '/images/vs_main03.jpg' : thumb === 10 ? process.env.PUBLIC_URL + '/images/vs_main03_1.jpg' : thumb === 11 ? process.env.PUBLIC_URL + '/images/vs_main03_2.jpg' : thumb === 12 ? process.env.PUBLIC_URL + '/images/vs_main03_3.jpg' : process.env.PUBLIC_URL + '/images/vs_main03.jpg'} alt="" /></div>
                     <div className='thumb_vs_main'>
                       <h3>BATTLEGROUNDS</h3>
@@ -135,9 +138,9 @@ function App() {
                       </div>
                     </div>
                   </div>
-              </Carousel.Item>
-            </Carousel>
-          </div>
+                </Carousel.Item>
+              </Carousel>
+            </div>
             <Container>
               <div className='nav_bg'>
                 <Nav>
@@ -199,14 +202,13 @@ function App() {
           </>
         }></Route>
 
-        <Route path='community' element={<Community />} />
         <Route path='about' element={<About />}>
 
         </Route>
-        <Route path='support' element={<Support />}/>
-        <Route path='detail/:id' element={<Detail data={games} />}/>
-        <Route path='cart' element={<Cart />}/>
-
+        <Route path='support' element={<Support />} />
+        <Route path='detail/:id' element={<Detail data={games} />} />
+        <Route path='cart' element={<Cart />} />
+        <Route path='favorite' element={<Favorite />} />
       </Routes>
       <div className="daily_view">
         <div className="daily_view_btn"><p>오늘 본 상품</p></div>

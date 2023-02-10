@@ -20,6 +20,7 @@ export default function Best(props) {
     margin-bottom: 20px;
     transition: all 0.3s;
     padding: 0;
+    position: relative;
 
     .item_img {
       width: 470px; height: 250px;
@@ -44,6 +45,9 @@ export default function Best(props) {
 
     }
 
+    .favorite_btn {
+    }
+
     &:hover {
       transform: scale(1.05, 1.15);
       transition: all 0.3s;
@@ -54,6 +58,8 @@ export default function Best(props) {
           box-shadow: inset 1px 1px 2px 0px rgba(0,0,0,.5)
         }
       }
+
+
       .item_img {
         width: 470px; height: 100%;
         padding: 0;
@@ -112,12 +118,29 @@ export default function Best(props) {
                               <li>{item.tag05}</li>
                             </ul>
                             <div><p> {hover === true && index === i ? item.desc : <><b>출시일: </b>{item.date}</>}</p></div>
+
+                            <button className="favorite_btn"></button>
+
+
                             <div class='price'>
                               {item.price === 0 ? <p className='free_play'>무료 플레이</p>
-                                : item.discount > 0 ? <><p className='discount_per'>{(item.discount) * 100}%</p><p className='cost_result'><p className='del_cost'>￦{(item.price).toLocaleString()}</p><p className='discount_cost'>￦{((item.discount) * (item.price)).toLocaleString()}</p></p></>
-                                  : item.price > 0 && item.discount === 0 ? <p className='item_cost'>￦{(item.price).toLocaleString()}</p> : ''}
+                                : item.discount > 0 ? <>
+                                  <p className='discount_per'>{(item.discount) * 100}%</p>
+                                  <p className='cost_result'>
+                                    <p className='del_cost'>￦{(item.price).toLocaleString()}</p>
+                                    <p className='discount_cost'>￦{((item.discount) * (item.price)).toLocaleString()}</p>
+                                  </p>
+                                </>
+                                  : item.price > 0 && item.discount === 0 ? <p className='item_cost'>￦{(item.price).toLocaleString()}</p> : ''}   
                               <button className='cart_add_btn' onClick={() => {
-                                dispatch(addItem({ id: item.id, num: item.num, image: <img src={item.image} alt='' />, name: item.name, price: item.price, discount: item.discount, count: 1 }));
+                                dispatch(addItem(
+                                  { id: item.id, 
+                                    num: item.num, 
+                                    image: <img src={item.image} alt='' />, 
+                                    name: item.name, 
+                                    price: item.price, 
+                                    discount: item.discount, count: 1 }
+                                  ));
                                 setAlert(true);
                               }}>장바구니</button>
                             </div>

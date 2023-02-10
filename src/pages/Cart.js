@@ -46,7 +46,7 @@ export default function Cart(){
                   return (
                     <tr>
                       <td className="cart_item_img" onClick={() => {
-                        dispatch(addDaily({id: state.cart[i].id, image: state.cart[i].image}))
+                        dispatch(addDaily({id: state.cart[i].id, image: state.cart[i].image, num: state.cart[i].num}))
                       }}><Link to={`/detail/${state.cart[i].num}`}>{state.cart[i].image}</Link></td>
                       <td className="cart_item_title">{state.cart[i].name}</td>
                       {
@@ -79,7 +79,10 @@ export default function Cart(){
               <td></td>
               <td></td>
               {allCount > 0 ?
-                <><td className="total_price">총 {allCount}개</td><td className="total_price">￦{sumPrice.toLocaleString()}</td></> : <p className="cart_zero_msg">장바구니가 비었습니다.</p>}
+                <>
+                  <td className="total_price">총 {allCount}개</td>
+                  <td className="total_price">￦{sumPrice.toLocaleString()}</td>
+                </> : <p className="cart_zero_msg">장바구니가 비었습니다.</p>}
             </tr>
           </Table>
           <div className="order_btn">
